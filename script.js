@@ -1,8 +1,6 @@
 const API_KEY = 'f9cb5c0856e8459792954125241701';
 const BASE_URL = 'https://api.weatherapi.com/v1';
 
-let city = 'Rome';
-
 const getWeather = async function getWeatherData(city) {
   const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=3`, { mode: 'cors' });
   const weatherData = await response.json();
@@ -46,14 +44,31 @@ const parseJson = function parseJsonResponseData(json) {
   };
 }
 
-getWeather(city)
-  .then((data) => {
-    const parsedData = parseJson(data);
+const form = document.querySelector('#form');
+const input = document.querySelector('#input');
 
-    console.log(parsedData);
+let city = 'Rome';
 
-    return parsedData;
-  })
-  .catch((response) => {
-    console.error('ERROR');
-  });
+function displayWeather(city) {
+  getWeather(city)
+    .then((data) => {
+      const parsedData = parseJson(data);
+
+      console.log(parsedData);
+
+      return parsedData;
+    })
+    .catch((response) => {
+      console.error('ERROR');
+    });
+}
+
+displayWeather(city);
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const city = input.value;
+
+  displayWeather(city);
+});
