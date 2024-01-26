@@ -156,6 +156,14 @@ button:hover {
 }
 
 @media (max-width: 700px) {
+  .form {
+    display: flex;
+  }
+
+  .form-field label {
+    display: none;
+  }
+
   .today, 
   .forecasts {
     grid-column: 1 / 3;

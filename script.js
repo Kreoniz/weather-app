@@ -135,7 +135,7 @@ tempModeBtn.addEventListener('click', (event) => {
   mode = (mode === 'celsius') ? 'fahrenheit' : 'celsius';
   tempModeBtn.textContent = modeSymbols[mode];
 
-  const city = input.value;
+  const city = input.value ? input.value : input.placeholder;
   displayWeather(city);
 });
 
@@ -145,9 +145,9 @@ const input = document.querySelector('#input');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const city = input.value;
+  const city = input.value ? input.value : input.placeholder;
 
   displayWeather(city);
 });
 
-displayWeather('Tokyo');
+displayWeather('Greenwich, United Kingdom');
