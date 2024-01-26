@@ -129,7 +129,13 @@ const displayWeather = function displayWeather(city) {
       return data;
     })
     .catch((response) => {
-      console.error('ERROR:', response);
+      document.querySelectorAll('img').forEach((img) => {
+        img.src = './src/loading.gif';
+      });
+
+      input.value = '';
+      input.placeholder = 'Error: failed request';
+      input.classList.add('error');
     });
 }
 
@@ -149,6 +155,8 @@ const input = document.querySelector('#input');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
+
+  input.classList.remove('error');
 
   const city = input.value ? input.value : input.placeholder;
 

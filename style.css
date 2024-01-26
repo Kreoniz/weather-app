@@ -64,6 +64,11 @@ form {
   text-align: center;
 }
 
+.input.error::placeholder {
+  color: red;
+  opacity: 1;
+}
+
 .submit-btn,
 .temp-mode-btn {
   appearance: none;
