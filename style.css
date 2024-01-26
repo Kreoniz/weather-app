@@ -64,7 +64,8 @@ form {
   text-align: center;
 }
 
-.submit-btn {
+.submit-btn,
+.temp-mode-btn {
   appearance: none;
   border: none;
 
@@ -72,6 +73,14 @@ form {
   font-size: 1.2rem;
   padding: 0 8px;
   height: 100%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.temp-mode-btn {
+  aspect-ratio: 1;
 }
 
 .today {

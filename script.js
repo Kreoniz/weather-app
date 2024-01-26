@@ -1,7 +1,7 @@
 const API_KEY = 'f9cb5c0856e8459792954125241701';
 const BASE_URL = 'https://api.weatherapi.com/v1';
 
-const mode = 'celsius';
+let mode = 'celsius';
 
 const modeSymbols = {
   'celsius': '°C',
@@ -127,10 +127,19 @@ const displayWeather = function displayWeather(city) {
     });
 }
 
+const tempModeBtn = document.querySelector('.temp-mode-btn');
+tempModeBtn.textContent = modeSymbols[mode];
+
+tempModeBtn.addEventListener('click', (event) => {
+  mode = (mode === 'celsius') ? 'fahrenheit' : 'celsius';
+  tempModeBtn.textContent = modeSymbols[mode];
+
+  const city = input.value;
+  displayWeather(city);
+});
+
 const form = document.querySelector('#form');
 const input = document.querySelector('#input');
-
-let city = 'Rome';
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
