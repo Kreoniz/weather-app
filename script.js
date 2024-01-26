@@ -79,7 +79,8 @@ const displayWeather = function displayWeather(city) {
       }
 
       const input = document.querySelector('#input');
-      input.value = `${data.location.city}, ${data.location.country}`;
+      input.value = '';
+      input.placeholder = `${data.location.city}, ${data.location.country}`;
 
       const todayIcon = document.querySelector('#today-icon');
       const todayStatus = document.querySelector('#today-status');
