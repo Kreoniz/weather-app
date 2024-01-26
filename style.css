@@ -73,7 +73,6 @@ form {
 .temp-mode-btn {
   appearance: none;
   border: none;
-  color: inherit;
 
   border-left: 2px solid var(--text);
   font-size: 1.2rem;
