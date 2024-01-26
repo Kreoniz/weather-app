@@ -7,15 +7,48 @@
   <title>Weather App</title>
 </head>
 <body>
-  <form id="form" action="#">
-    <div class="form-field">
-      <label for="input">City</label>
-      <input id="input" type="text">
+    <div class="weather">
+
+      <form id="form" action="#">
+        <div class="form-field">
+          <label for="input">City:</label>
+          <input id="input" type="text">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="current">
+        <div class="current-icon">
+          <img id="current-icon">
+        </div>
+        <div id="current-info" class="current-info"></div>
+      </div>
+
+      <div id="forecasts" class="forecasts">
+        <div data-id="1" class="forecast">
+          <div class="forecast-icon">
+            <img>
+          </div>
+          <div class="forecast-info"></div>
+        </div>
+
+        <div data-id="2" class="forecast">
+          <div class="forecast-icon">
+            <img>
+          </div>
+          <div class="forecast-info"></div>
+        </div>
+
+        <div data-id="3" class="forecast">
+          <div class="forecast-icon">
+            <img>
+          </div>
+          <div class="forecast-info"></div>
+        </div>
+      </div>
+
     </div>
 
-    <button type="submit">Submit</button>
-  </form>
-  
   <script src="./script.js"></script>
 </body>
 </html>
