@@ -72,6 +72,11 @@ const displayWeather = function displayWeather(city) {
     img.src = './src/loading.gif';
   });
 
+  const dynamicTextElements = document.querySelectorAll('[data-dynamic]');
+  dynamicTextElements.forEach((elem) => {
+    elem.textContent = '';
+  });
+
   getWeather(city)
     .then((data) => {
       if (!data) {

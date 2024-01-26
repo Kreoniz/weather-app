@@ -11,7 +11,7 @@
 
       <form id="form" action="#">
         <div class="form-field">
-          <label for="input">City:</label>
+          <label for="input">Location:</label>
           <input autofocus class="input" id="input" type="text">
         </div>
         <button class="submit-btn" type="submit">Submit</button>
@@ -21,13 +21,13 @@
       <div class="today">
         <div class="today-icon">
           <img id="today-icon">
-          <div id="today-status" class="today-status"></div>
+          <div data-dynamic id="today-status" class="today-status">Weather</div>
         </div>
         <div id="today-info" class="today-info">
-          <div>Current: <span class="today-current"></span></div>
-          <div>Feels like: <span class="today-feels-like"></span></div>
-          <div>Min: <span class="today-min"></span></div>
-          <div>Max: <span class="today-max"></span></div>
+          <div>Current: <span data-dynamic class="today-current"></span></div>
+          <div>Feels like: <span data-dynamic class="today-feels-like"></span></div>
+          <div>Min: <span data-dynamic class="today-min"></span></div>
+          <div>Max: <span data-dynamic class="today-max"></span></div>
         </div>
       </div>
 
@@ -35,24 +35,24 @@
         <div class="forecast">
           <div class="forecast-icon">
             <img>
-            <div class="forecast-status"></div>
+            <div data-dynamic class="forecast-status">Weather</div>
           </div>
           <div class="forecast-info">
-            <div class="forecast-temp">Min: <span class="forecast-min"></span></div>
-            <div class="forecast-temp">Max: <span class="forecast-max"></span></div>
-            <div class="forecast-temp">Average: <span class="forecast-avg"></span></div>
+            <div class="forecast-temp">Min: <span data-dynamic class="forecast-min"></span></div>
+            <div class="forecast-temp">Max: <span data-dynamic class="forecast-max"></span></div>
+            <div class="forecast-temp">Average: <span data-dynamic class="forecast-avg"></span></div>
           </div>
         </div>
 
         <div class="forecast">
           <div class="forecast-icon">
             <img>
-            <div class="forecast-status"></div>
+            <div data-dynamic class="forecast-status">Weather</div>
           </div>
           <div class="forecast-info">
-            <div class="forecast-temp">Min: <span class="forecast-min"></span></div>
-            <div class="forecast-temp">Max: <span class="forecast-max"></span></div>
-            <div class="forecast-temp">Average: <span class="forecast-avg"></span></div>
+            <div class="forecast-temp">Min: <span data-dynamic class="forecast-min"></span></div>
+            <div class="forecast-temp">Max: <span data-dynamic class="forecast-max"></span></div>
+            <div class="forecast-temp">Average: <span data-dynamic class="forecast-avg"></span></div>
           </div>
         </div>
 
