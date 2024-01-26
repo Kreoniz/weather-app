@@ -9,55 +9,58 @@ const modeSymbols = {
 }
 
 const parseJson = function parseJsonResponseData(json) {
-  const city = json.location.name;
-  const country = json.location.country;
+  try {
+    const city = json.location.name;
+    const country = json.location.country;
 
-  const forecastData = json.forecast.forecastday;
-  const forecast = [];
+    const forecastData = json.forecast.forecastday;
+    const forecast = [];
 
-  for (let i = 1; i < forecastData.length; i += 1) {
-    const day = forecastData[i];
-    forecast[i - 1] = {
-      date: day.date,
-      condition: day.day.condition,
-      celsius: {
-        min: day.day.mintemp_c,
-        max: day.day.maxtemp_c,
-        average: day.day.avgtemp_c,
+    for (let i = 1; i < forecastData.length; i += 1) {
+      const day = forecastData[i];
+      forecast[i - 1] = {
+        date: day.date,
+        condition: day.day.condition,
+        celsius: {
+          min: day.day.mintemp_c,
+          max: day.day.maxtemp_c,
+          average: day.day.avgtemp_c,
+        },
+        fahrenheit: {
+          min: day.day.mintemp_f,
+          max: day.day.maxtemp_f,
+          average: day.day.avgtemp_f,
+        },
+      };
+    }
+
+    return {
+      location: { city, country },
+      today: {
+        celsius: {
+          current: json.current.temp_c,
+          feelslike: json.current.feelslike_c,
+          min: forecastData[0].day.mintemp_c,
+          max: forecastData[0].day.maxtemp_c,
+        },
+        fahrenheit: {
+          current: json.current.temp_f,
+          feelslike: json.current.feelslike_f,
+          min: forecastData[0].day.mintemp_f,
+          max: forecastData[0].day.maxtemp_f,
+        },
+        condition: json.current.condition,
       },
-      fahrenheit: {
-        min: day.day.mintemp_f,
-        max: day.day.maxtemp_f,
-        average: day.day.avgtemp_f,
-      },
+      forecast,
     };
+  } catch {
+    return false;
   }
-
-  return {
-    location: { city, country },
-    today: {
-      celsius: {
-        current: json.current.temp_c,
-        feelslike: json.current.feelslike_c,
-        min: forecastData[0].day.mintemp_c,
-        max: forecastData[0].day.maxtemp_c,
-      },
-      fahrenheit: {
-        current: json.current.temp_f,
-        feelslike: json.current.feelslike_f,
-        min: forecastData[0].day.mintemp_f,
-        max: forecastData[0].day.maxtemp_f,
-      },
-      condition: json.current.condition,
-    },
-    forecast,
-  };
 }
 
 const getWeather = async function getWeatherData(city) {
   const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=3`, { mode: 'cors' });
   const weatherData = await response.json();
-  console.log('Original:', weatherData);
 
   const parsedData = parseJson(weatherData);
 
@@ -66,12 +69,14 @@ const getWeather = async function getWeatherData(city) {
 
 const displayWeather = function displayWeather(city) {
   document.querySelectorAll('img').forEach((img) => {
-    img.src = './loading.gif';
+    img.src = './src/loading.gif';
   });
 
   getWeather(city)
     .then((data) => {
-      console.log(data);
+      if (!data) {
+        return Promise.reject('No response');
+      }
 
       const input = document.querySelector('#input');
       input.value = `${data.location.city}, ${data.location.country}`;
@@ -134,3 +139,5 @@ form.addEventListener('submit', (event) => {
 
   displayWeather(city);
 });
+
+displayWeather('Tokyo');

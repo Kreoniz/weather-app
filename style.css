@@ -1,5 +1,6 @@
 :root {
   --bg: #e1f5fe;
+  --primary: #7ed9f8;
   --text: #021922;
 }
 
@@ -31,14 +32,29 @@ form {
 
 .today {
   border-radius: 0 0 0 1rem;
-  display: grid;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .today-icon {
   display: flex;
-  align-items: centero
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.6rem;
+}
+
+.today-info {
+  font-size: 1rem;
+}
+
+.today-info span {
+  font-size: 1.2rem;
+}
+
+.today-info > *:not(.today-info > *:last-child) {
+  margin: 0 0 1rem;
 }
 
 .forecasts {
@@ -47,26 +63,41 @@ form {
 }
 
 .forecast {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
 }
 
 .forecast-icon {
-  flex: 0 1 auto;
+  text-align: center;
 }
 
 .forecast-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.forecast:last-child {
+.forecast:last-child > .forecast-info:last-child {
   border-radius: 0 0 1rem 0;
-  overflow: hidden;
+}
+
+.forecast-icon > img {
+  max-width: 64px;
+  max-height: 64px;
+  margin: auto;
+}
+
+.forecast-temp span {
+  font-size: 1.2rem;
 }
 
 .forecast-icon,
 .forecast-info,
 .today,
 form {
-  background-color: salmon;
+  background-color: var(--primary);
+  padding: 10px;
+  border: 2px solid var(--text);
 }
